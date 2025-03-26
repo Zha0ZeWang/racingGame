@@ -2,15 +2,35 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>asdsad</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Racing Game</title>
 		<style type="text/css">
-		    body{
-		    	background: gray;
+		    html, body {
+		    	margin: 0;
+		    	padding: 0;
+		    	width: 100%;
+		    	height: 100%;
+		    	overflow: hidden;
 		    }
-			#myGame{
+		    body {
+		    	background: #000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+		    }
+			#myGame {
 				width: 1000px;
-				margin: 0 auto;
+				height: 600px;
+                position: relative;
+                transform-origin: center center;
 			}
+            canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
 		</style>
 		<script src="lib/Box2dWeb-2.1.a.3.min.js" type="text/javascript" charset="utf-8"></script>
 	    <script src="lib/lufylegend-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
@@ -18,5 +38,5 @@
 	</head>
 	<body>
 		<div id="myGame"></div>
-</body>
+	</body>
 </html> 

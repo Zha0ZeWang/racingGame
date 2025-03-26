@@ -1,4 +1,35 @@
-init(45, "myGame", 1000, 600, gameInit);
+function getGameSize() {
+    var baseWidth = 1000;  // 基准宽度
+    var baseHeight = 600;  // 基准高度
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var scale = Math.min(windowWidth / baseWidth, windowHeight / baseHeight);
+    
+    return {
+        width: baseWidth,
+        height: baseHeight,
+        scale: scale
+    };
+}
+
+// 初始化游戏
+var size = getGameSize();
+init(45, "myGame", size.width, size.height, gameInit);
+
+// 监听窗口大小变化
+window.addEventListener('resize', function() {
+    var newSize = getGameSize();
+    if (world) {
+        var container = document.getElementById("myGame");
+        var scale = newSize.scale;
+        container.style.transform = "scale(" + scale + ")";
+        container.style.transformOrigin = "center center";
+        if (world.sceneObj) {
+            world.sceneObj.init();
+        }
+    }
+});
+
 var world,
     levelNum = 9,
 	backLayer,
@@ -98,6 +129,12 @@ function gameInit() {
 	LStage.box2d = new LBox2d([0, 0]);
 	backLayer = new LSprite();
 	addChild(backLayer);
+
+	// 设置缩放和居中
+	var container = document.getElementById("myGame");
+	var scale = size.scale;
+	container.style.transform = "scale(" + scale + ")";
+	container.style.transformOrigin = "center center";
 
 	if(LStage.canTouch == true) {
 		document.body.style.margin = "0px";

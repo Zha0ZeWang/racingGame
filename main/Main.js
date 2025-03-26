@@ -1,11 +1,16 @@
-
 function Main(){
 	var s = this;
 	base(s,LSprite,[]);
 
 	/**设置场景大小*/
-	s.sceneWidth = 1000;
-	s.sceneHeight = 600;
+	s.sceneWidth = 1000;  // 固定基准宽度
+	s.sceneHeight = 600;  // 固定基准高度
+
+	// 监听窗口大小变化
+	window.addEventListener('resize', function() {
+		s.sceneWidth = window.innerWidth;
+		s.sceneHeight = window.innerHeight;
+	});
 }
 
 Main.prototype.init = function(){
