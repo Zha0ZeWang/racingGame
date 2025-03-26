@@ -23,16 +23,14 @@ Scene.prototype = {
 		//oprate
 		var startBtn = s.addButton([20,"开始游戏",10,6,"#ffffff","#4ae3a0"],[0,0,"start"]);
 		var oprateBtn = s.addButton([20,"操作说明",10,6,"#ffffff","#4ae3a0"],[0,40,"explain"]);
-		var aboutBtn = s.addButton([20,"关于",30,6,"#ffffff","#4ae3a0"],[0,80,"about"]);
 		//show
-		var oprate = s.createRect(1,"rgba(21,132,164,.5)",[0, 0, 100, 110],true,"rgba(21,132,164,.5)");
+		var oprate = s.createRect(1,"rgba(21,132,164,.5)",[0, 0, 100, 80],true,"rgba(21,132,164,.5)");
 		oprate.x = 450;
 		oprate.y = 200;
 		oprate.width = 100;
-		oprate.height = 200;
+		oprate.height = 150;
 		oprate.addChild(startBtn);
 		oprate.addChild(oprateBtn);
-		oprate.addChild(aboutBtn);
 		oprate.addEventListener(LMouseEvent.MOUSE_DOWN,s.oprate);
 		w.addChild(oprate);
 	},
@@ -43,9 +41,6 @@ Scene.prototype = {
 		switch(e.target.name){
 			case "explain":
 			     w.sceneObj.explain();
-			     break;
-			case "about":
-			     w.sceneObj.about();
 			     break;
 			case "start":
 			     w.sceneObj.start();
@@ -131,19 +126,6 @@ Scene.prototype = {
 		explainText.width = 300; 
 		explain.addChild(explainText);
 		w.addChild(explain);
-	},
-	
-	about: function(){
-		var w = world,
-		    s = this;
-		s.init();    
-		s.addbg(); 
-		var about = s.panel();
-		var aboutText = s.addText(16,"感谢lufy大哥的lufylegend游戏引擎和优化了box2dweb的各路大哥",50,50,"#ffffff");
-		aboutText.setWordWrap(true,25);
-		aboutText.width = 300; 
-		about.addChild(aboutText);
-		w.addChild(about);
 	},
 	
 	panel: function(r,rt,pc){
